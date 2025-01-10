@@ -33,11 +33,12 @@
             textBox2 = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(111, 269);
+            button1.Location = new Point(111, 221);
             button1.Name = "button1";
             button1.Size = new Size(104, 42);
             button1.TabIndex = 0;
@@ -78,12 +79,23 @@
             label2.TabIndex = 4;
             label2.Text = "Sifre";
             // 
+            // button2
+            // 
+            button2.Location = new Point(12, 294);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 5;
+            button2.Text = "geri";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.HotTrack;
             ClientSize = new Size(612, 353);
+            Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox2);
@@ -104,5 +116,6 @@
         private TextBox textBox2;
         private Label label1;
         private Label label2;
+        private Button button2;
     }
 }

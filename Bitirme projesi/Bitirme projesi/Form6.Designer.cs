@@ -40,12 +40,12 @@
             button3 = new Button();
             button1 = new Button();
             listBox1 = new ListBox();
+            button4 = new Button();
             SuspendLayout();
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "bir sey almıyacam" });
             comboBox1.Location = new Point(145, 139);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
@@ -90,16 +90,15 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "bir sey almıyacam" });
             comboBox2.Location = new Point(145, 215);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(121, 23);
             comboBox2.TabIndex = 6;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "bir sey almıyacam" });
             comboBox3.Location = new Point(145, 291);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(121, 23);
@@ -119,7 +118,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F);
-            label5.Location = new Point(702, 569);
+            label5.Location = new Point(907, 484);
             label5.Name = "label5";
             label5.Size = new Size(131, 25);
             label5.TabIndex = 9;
@@ -149,10 +148,20 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(702, 115);
+            listBox1.Location = new Point(748, 26);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(510, 424);
             listBox1.TabIndex = 11;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(15, 588);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 12;
+            button4.Text = "geri";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // Form6
             // 
@@ -160,6 +169,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.MenuHighlight;
             ClientSize = new Size(1343, 638);
+            Controls.Add(button4);
             Controls.Add(listBox1);
             Controls.Add(button3);
             Controls.Add(label5);
@@ -192,5 +202,6 @@
         private Button button3;
         private Button button1;
         private ListBox listBox1;
+        private Button button4;
     }
 }

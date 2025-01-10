@@ -37,3 +37,4 @@ C:\Users\gorkem\source\repos\Bitirme projesi\Bitirme projesi\obj\Debug\net8.0-wi
 C:\Users\gorkem\source\repos\Bitirme projesi\Bitirme projesi\obj\Debug\net8.0-windows\Bitirme_projesi.Form5.resources
 C:\Users\gorkem\source\repos\Bitirme projesi\Bitirme projesi\obj\Debug\net8.0-windows\Bitirme_projesi.Form6.resources
 C:\Users\gorkem\source\repos\Bitirme projesi\Bitirme projesi\obj\Debug\net8.0-windows\Bitirme_projesi.Form7.resources
+C:\Users\gorkem\source\repos\Bitirme projesi\Bitirme projesi\obj\Debug\net8.0-windows\Bitirme_projesi.Form8.resources

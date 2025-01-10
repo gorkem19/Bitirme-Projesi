@@ -38,6 +38,7 @@
             button1 = new Button();
             label5 = new Label();
             comboBox1 = new ComboBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -99,7 +100,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(145, 430);
+            button1.Location = new Point(164, 394);
             button1.Name = "button1";
             button1.Size = new Size(140, 55);
             button1.TabIndex = 7;
@@ -125,12 +126,23 @@
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 9;
             // 
+            // button2
+            // 
+            button2.Location = new Point(20, 426);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "geri";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 0);
             ClientSize = new Size(984, 540);
+            Controls.Add(button2);
             Controls.Add(comboBox1);
             Controls.Add(label5);
             Controls.Add(button1);
@@ -160,5 +172,6 @@
         private Button button1;
         private Label label5;
         private ComboBox comboBox1;
+        private Button button2;
     }
 }

@@ -25,8 +25,8 @@ namespace Bitirme_projesi
         private void YeniRestoranEkle(string restoranAdi)
         {
             Form6 yeniForm = new Form6();
-            yeniForm.Text = restoranAdi; 
-            yeniForm.Show(); 
+            yeniForm.Text = restoranAdi;
+            yeniForm.Show();
         }
         private void Form5_Load(object sender, EventArgs e)
         {
@@ -47,11 +47,18 @@ namespace Bitirme_projesi
 
             MessageBox.Show("restoranınız eklenecektir", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-           
 
 
 
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 Form1 = new Form1();
+            Form1.Show();
+            this.Hide();
         }
     }
 }

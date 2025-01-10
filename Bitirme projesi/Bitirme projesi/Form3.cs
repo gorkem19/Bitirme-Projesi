@@ -22,6 +22,7 @@ namespace Bitirme_projesi
         {
             // Global değişken, her yerden erişilebilir
             public static string kullanıcıadı;
+            public static string ad;
         }
         private void Form3_Load(object sender, EventArgs e)
         {
@@ -41,15 +42,15 @@ namespace Bitirme_projesi
 
 
             if (reader.Read())
-                {
+            {
 
+                GlobalData.ad = reader["ad"].ToString();
+                con.Close();
+                Form4 anaForm = new Form4();
+                anaForm.Show();
+                this.Hide();
 
-                    con.Close();
-                    Form4 anaForm = new Form4();
-                    anaForm.Show();
-                    this.Hide();
-
-                }
+            }
             else
             {
                 MessageBox.Show("hatalı giris");
@@ -59,9 +60,16 @@ namespace Bitirme_projesi
 
         }
 
-            private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Owner?.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 Form1= new Form1();
+            Form1.Show();
+            this.Hide();
         }
     }
 }

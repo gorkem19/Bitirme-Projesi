@@ -322,6 +322,7 @@
             Controls.Add(label1);
             Name = "Form7";
             Text = "Form7";
+            FormClosing += Form7_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

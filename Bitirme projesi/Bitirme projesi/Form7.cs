@@ -179,5 +179,12 @@ namespace Bitirme_projesi
                 MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Form7_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form6 Form6 = new Form6();
+            Form6.Show();
+           
+        }
     }
 }

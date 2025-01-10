@@ -55,5 +55,19 @@ namespace Bitirme_projesi
             restoranForm.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form1 Form1 = new Form1();
+            Form1.Show();
+            this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form8 Form8 = new Form8();
+            Form8.Show();
+            this.Hide();
+        }
     }
 }
