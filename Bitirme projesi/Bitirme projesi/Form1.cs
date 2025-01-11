@@ -4,6 +4,8 @@ namespace Bitirme_projesi
 {
     public partial class Form1 : Form
     {
+        
+
         public Form1()
         {
             InitializeComponent();
@@ -22,12 +24,15 @@ namespace Bitirme_projesi
             MySqlConnection con = new MySqlConnection("Server=localhost;Database=bitirmeprojesi;Uid=root;Pwd=123456");
         }
 
+
+  
         private void button1_Click(object sender, EventArgs e)
         {
             Form3 girisForm = new Form3();
             girisForm.Owner = this;
             girisForm.Show();
-            this.Hide(); 
+            this.Hide();
+           
         }
     }
 }

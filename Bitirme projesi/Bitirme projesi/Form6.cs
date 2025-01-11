@@ -31,6 +31,7 @@ namespace Bitirme_projesi
 
         private void Form6_Load(object sender, EventArgs e)
         {
+        
             if (GlobalData.kullanıcıadı == "g" )
             {
                 button3.Visible = true;

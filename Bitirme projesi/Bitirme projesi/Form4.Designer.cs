@@ -37,12 +37,13 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            button6 = new Button();
             SuspendLayout();
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Ankara" });
+            comboBox1.Items.AddRange(new object[] { "Adana", "", "Adıyaman", "", "Afyonkarahisar", "", "Ağrı", "", "Aksaray", "", "Amasya", "", "Ankara", "", "Antalya", "", "Artvin", "", "Aydın", "", "Balıkesir", "", "Bartın", "", "Batman", "", "Bayburt", "", "Bilecik", "", "Bingöl", "", "Bitlis", "", "Bolu", "", "Burdur", "", "Bursa", "", "Çanakkale", "", "Çankırı", "", "Çorum", "", "Denizli", "", "Diyarbakır", "", "Düzce", "", "Edirne", "", "Elazığ", "", "Erzincan", "", "Erzurum", "", "Eskişehir", "", "Gaziantep", "", "Giresun", "", "Gümüşhane", "", "Hakkâri", "", "Hatay", "", "Iğdır", "", "Isparta", "", "İstanbul", "", "İzmir", "", "Kahramanmaraş", "", "Karabük", "", "Karaman", "", "Kars", "", "Kastamonu", "", "Kayseri", "", "Kırıkkale", "", "Kırklareli", "", "Kırşehir", "", "Kilis", "", "Konya", "", "Kütahya", "", "Malatya", "", "Manisa", "", "Mardin", "", "Mersin", "", "Muğla", "", "Muş", "", "Nevşehir", "", "Niğde", "", "Ordu", "", "Osmaniye", "", "Rize", "", "Sakarya", "", "Samsun", "", "Siirt", "", "Sinop", "", "Sivas", "", "Şanlıurfa", "", "Şırnak", "", "Tekirdağ", "", "Tokat", "", "Trabzon", "", "Tunceli", "", "Uşak", "", "Van", "", "Yalova", "", "Yozgat", "", "Zonguldak", "", "Ardahan", "", "Ağrı" });
             comboBox1.Location = new Point(111, 59);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(140, 23);
@@ -80,7 +81,6 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "kardesler pide salonu" });
             comboBox2.Location = new Point(111, 136);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(140, 23);
@@ -126,12 +126,23 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // button6
+            // 
+            button6.Location = new Point(364, 101);
+            button6.Name = "button6";
+            button6.Size = new Size(141, 23);
+            button6.TabIndex = 9;
+            button6.Text = "restoranları goster";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.MenuHighlight;
-            ClientSize = new Size(657, 489);
+            ClientSize = new Size(835, 542);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -143,6 +154,7 @@
             Controls.Add(comboBox1);
             Name = "Form4";
             Text = "Form4";
+            Load += Form4_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -158,5 +170,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private Button button6;
     }
 }
