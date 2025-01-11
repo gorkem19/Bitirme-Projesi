@@ -31,6 +31,14 @@ namespace Bitirme_projesi
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            if (GlobalData.kullanıcıadı == "g" )
+            {
+                button3.Visible = true;
+            }
+            else
+            {
+                button3.Visible=false;
+            }
             comboBox1.Items.Insert(0, "");
             comboBox2.Items.Insert(0, "");
             comboBox3.Items.Insert(0, "");

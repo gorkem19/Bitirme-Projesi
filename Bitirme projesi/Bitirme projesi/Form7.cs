@@ -184,7 +184,14 @@ namespace Bitirme_projesi
         {
             Form6 Form6 = new Form6();
             Form6.Show();
-           
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8("Form7"); 
+            form8.Show();
+            this.Hide();
         }
     }
 }

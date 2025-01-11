@@ -65,8 +65,8 @@ namespace Bitirme_projesi
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form8 Form8 = new Form8();
-            Form8.Show();
+            Form8 form8 = new Form8("Form4"); 
+            form8.Show();
             this.Hide();
         }
     }
