@@ -28,19 +28,36 @@ namespace Bitirme_projesi
             InitializeComponent();
         }
         MySqlConnection con = new MySqlConnection("Server=localhost;Database=bitirmeprojesi;Uid=root;Pwd=123456");
-
-        private void Form6_Load(object sender, EventArgs e)
+        private void yorumyukle(){
+            con.Open();
+            MySqlCommand cmd4 = new MySqlCommand("select * from yorumlar where  hangirestorana = @p1", con);
+            cmd4.Parameters.AddWithValue("@p1", GlobalData.restoranadi);
+            MySqlDataReader reader4 = cmd4.ExecuteReader();
+            while (reader4.Read())
+            {
+                string ad = reader4["İsim"].ToString();
+                string yorum = reader4["yorum"].ToString();
+                dataGridView1.Rows.Add(ad, yorum);
+            }
+            con.Close();
+        }
+    private void Form6_Load(object sender, EventArgs e)
         {
-        
-            if (GlobalData.kullanıcıadı== GlobalData.sahibininkullanıcıadı)
+            dataGridView1.Columns.Add("Column1", "ad");
+            dataGridView1.Columns.Add("Column2", "yorum");
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            yorumyukle();
+
+                if (GlobalData.kullanıcıadı == GlobalData.sahibininkullanıcıadı)
             {
                 button3.Visible = true;
-               
+
             }
             else
             {
                 button3.Visible = false;
-              
+
 
             }
             comboBox1.Items.Insert(0, "");
@@ -76,7 +93,7 @@ namespace Bitirme_projesi
 
             }
 
-            
+
             reader2.Close();
             con.Close();
             con.Open();
@@ -91,7 +108,7 @@ namespace Bitirme_projesi
 
 
                 comboBox3.Items.Add(tatliadivefiyati);
-               
+
             }
             reader3.Close();
 
@@ -155,7 +172,7 @@ namespace Bitirme_projesi
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
-            MessageBox.Show($"Siparisiniz Yola Cıkmıstır ucretiniz {toplamFiyat}");
+            MessageBox.Show($"Siparisiniz Alınmıstır {toplamFiyat}");
             string siparisListesi = string.Join(", ", listBox1.Items.Cast<string>());
             listBox1.Items.Clear();
             label5.Text = $"urunlerin toplam fiyati {toplamFiyat}";
@@ -167,6 +184,7 @@ namespace Bitirme_projesi
             cmd.Parameters.AddWithValue("@p5", "hazırlanıyor");
             cmd.Parameters.AddWithValue("@p6", GlobalData.restoranadi);
             toplamFiyat = 0;
+            label5.Text = $"urunlerin toplam fiyati: {toplamFiyat}";
             cmd.ExecuteNonQuery();
             con.Close();
 
@@ -174,6 +192,34 @@ namespace Bitirme_projesi
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           string silinenurun = (string)listBox1.SelectedItem;
+           decimal silinecekurun = Convert.ToDecimal(silinenurun.Split('-')[1].Replace(" TL", "").Trim());
+            listBox1.Items.Remove(listBox1.SelectedItem);
+            toplamFiyat -= silinecekurun;
+            label5.Text = $"urunlerin toplam fiyati: {toplamFiyat}";
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            string yorum = textBox1.Text;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO yorumlar (isim,yorum,hangirestorana) VALUES (@p1, @p2, @p3)", con);
+            cmd.Parameters.AddWithValue("@p1", GlobalData.ad);
+            cmd.Parameters.AddWithValue("@p2", yorum);
+            cmd.Parameters.AddWithValue("@p3", GlobalData.restoranadi);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            yorumyukle();
+           
+
 
         }
     }

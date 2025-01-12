@@ -29,6 +29,7 @@ namespace Bitirme_projesi
 
         private void Form8_Load(object sender, EventArgs e)
         {
+
             if (fromForm == "Form7")
             {
                 label1.Visible = true;
