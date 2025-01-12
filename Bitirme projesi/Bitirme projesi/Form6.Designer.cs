@@ -41,6 +41,14 @@
             button1 = new Button();
             listBox1 = new ListBox();
             button4 = new Button();
+            button5 = new Button();
+            dataGridView1 = new DataGridView();
+            label6 = new Label();
+            pictureBox1 = new PictureBox();
+            textBox1 = new TextBox();
+            button6 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // comboBox1
@@ -118,7 +126,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F);
-            label5.Location = new Point(907, 484);
+            label5.Location = new Point(471, 474);
             label5.Name = "label5";
             label5.Size = new Size(131, 25);
             label5.TabIndex = 9;
@@ -126,7 +134,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(512, 168);
+            button3.Location = new Point(312, 139);
             button3.Name = "button3";
             button3.Size = new Size(115, 47);
             button3.TabIndex = 10;
@@ -136,7 +144,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(512, 291);
+            button1.Location = new Point(312, 232);
             button1.Name = "button1";
             button1.Size = new Size(115, 47);
             button1.TabIndex = 0;
@@ -148,7 +156,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(748, 26);
+            listBox1.Location = new Point(447, 24);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(510, 424);
             listBox1.TabIndex = 11;
@@ -163,12 +171,71 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(575, 528);
+            button5.Name = "button5";
+            button5.Size = new Size(111, 42);
+            button5.TabIndex = 13;
+            button5.Text = "Sepetten Cıkar";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(981, 42);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(439, 414);
+            dataGridView1.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(1135, 24);
+            label6.Name = "label6";
+            label6.Size = new Size(183, 15);
+            label6.TabIndex = 15;
+            label6.Text = "Bu Restoran Hakkındaki Yorumlar";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(1009, 582);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(9, 8);
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(981, 462);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(425, 129);
+            textBox1.TabIndex = 17;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(1053, 597);
+            button6.Name = "button6";
+            button6.Size = new Size(293, 29);
+            button6.TabIndex = 18;
+            button6.Text = "Yorumu Gonder";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.MenuHighlight;
-            ClientSize = new Size(1343, 638);
+            ClientSize = new Size(1432, 638);
+            Controls.Add(button6);
+            Controls.Add(textBox1);
+            Controls.Add(pictureBox1);
+            Controls.Add(label6);
+            Controls.Add(dataGridView1);
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(listBox1);
             Controls.Add(button3);
@@ -185,6 +252,8 @@
             Name = "Form6";
             Text = "Form6";
             Load += Form6_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -203,5 +272,11 @@
         private Button button1;
         private ListBox listBox1;
         private Button button4;
+        private Button button5;
+        private DataGridView dataGridView1;
+        private Label label6;
+        private PictureBox pictureBox1;
+        private TextBox textBox1;
+        private Button button6;
     }
 }

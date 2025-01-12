@@ -45,7 +45,7 @@ namespace Bitirme_projesi
             cmd.ExecuteNonQuery();
             con.Close();
 
-            MessageBox.Show("restoranınız eklenecektir", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("restoranınız eklenmistir", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 

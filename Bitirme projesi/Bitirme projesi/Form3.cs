@@ -23,6 +23,9 @@ namespace Bitirme_projesi
             // Global değişken, her yerden erişilebilir
             public static string kullanıcıadı;
             public static string ad;
+            public static string restoranadi;
+            public static string sahibininkullanıcıadı;
+            public static string GirisYapanForm;
         }
         private void Form3_Load(object sender, EventArgs e)
         {
