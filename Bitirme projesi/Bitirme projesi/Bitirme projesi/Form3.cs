@@ -25,6 +25,7 @@ namespace Bitirme_projesi
             public static string ad;
             public static string restoranadi;
             public static string sahibininkullanıcıadı;
+            public static string GirisYapanForm;
         }
         private void Form3_Load(object sender, EventArgs e)
         {

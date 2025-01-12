@@ -34,7 +34,6 @@
             label2 = new Label();
             comboBox2 = new ComboBox();
             button2 = new Button();
-            button3 = new Button();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
@@ -96,16 +95,6 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button3
-            // 
-            button3.Location = new Point(230, 333);
-            button3.Name = "button3";
-            button3.Size = new Size(119, 40);
-            button3.TabIndex = 6;
-            button3.Text = "restoranlarım";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
             // button4
             // 
             button4.Location = new Point(12, 394);
@@ -145,7 +134,6 @@
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(comboBox2);
             Controls.Add(label2);
@@ -167,7 +155,6 @@
         private Label label2;
         private ComboBox comboBox2;
         private Button button2;
-        private Button button3;
         private Button button4;
         private Button button5;
         private Button button6;

@@ -32,13 +32,16 @@ namespace Bitirme_projesi
         private void Form6_Load(object sender, EventArgs e)
         {
         
-            if (GlobalData.kullanıcıadı == "HASAN USTA" )
+            if (GlobalData.kullanıcıadı== GlobalData.sahibininkullanıcıadı)
             {
                 button3.Visible = true;
+               
             }
             else
             {
-                button3.Visible=false;
+                button3.Visible = false;
+              
+
             }
             comboBox1.Items.Insert(0, "");
             comboBox2.Items.Insert(0, "");
@@ -60,11 +63,12 @@ namespace Bitirme_projesi
             reader.Close();
             con.Close();
             con.Open();
-            MySqlCommand cmd2 = new MySqlCommand("SELECT icecekadı, icecekfiyati FROM iceceklistesi", con);
+            MySqlCommand cmd2 = new MySqlCommand("SELECT icecekadi, icecekfiyati FROM iceceklistesi where hangirestoranda=@p2", con);
+            cmd2.Parameters.AddWithValue("@p2", GlobalData.restoranadi);
             MySqlDataReader reader2 = cmd2.ExecuteReader();
             while (reader2.Read())
             {
-                string icecekAdı = reader2["icecekadı"].ToString();
+                string icecekAdı = reader2["icecekadi"].ToString();
                 icecekFiyatı = reader2.GetDecimal("icecekfiyati");
                 string icecekadivefiyati = $"{icecekAdı} - {icecekFiyatı} TL";
 
@@ -76,11 +80,12 @@ namespace Bitirme_projesi
             reader2.Close();
             con.Close();
             con.Open();
-            MySqlCommand cmd3 = new MySqlCommand("SELECT tatlıadı, fiyat FROM tatlılistesi", con);
+            MySqlCommand cmd3 = new MySqlCommand("SELECT tatlıadi, fiyat FROM tatlılistesi where hangirestoranda=@p3", con);
+            cmd3.Parameters.AddWithValue("@p3", GlobalData.restoranadi);
             MySqlDataReader reader3 = cmd3.ExecuteReader();
             while (reader3.Read())
             {
-                string tatlıAdı = reader3["tatlıadı"].ToString();
+                string tatlıAdı = reader3["tatlıadi"].ToString();
                 tatlıFiyati = reader3.GetDecimal("fiyat");
                 string tatliadivefiyati = $"{tatlıAdı} - {tatlıFiyati} TL";
 
@@ -154,12 +159,13 @@ namespace Bitirme_projesi
             string siparisListesi = string.Join(", ", listBox1.Items.Cast<string>());
             listBox1.Items.Clear();
             label5.Text = $"urunlerin toplam fiyati {toplamFiyat}";
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO siparisler (kullanici_adi, siparisi_veren_adi,siparislistesi,siparisfiyati, siparis_durumu) VALUES (@p1, @p2, @p3,@p4,@p5)", con);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO siparisler (kullanici_adi, siparisi_veren_adi,siparislistesi,siparisfiyati,siparis_hangi_restoranın, siparis_durumu) VALUES (@p1, @p2, @p3,@p4,@p6,@p5)", con);
             cmd.Parameters.AddWithValue("@p1", GlobalData.kullanıcıadı);
             cmd.Parameters.AddWithValue("@p2", GlobalData.ad);
             cmd.Parameters.AddWithValue("@p3", siparisListesi);
             cmd.Parameters.AddWithValue("@p4", toplamFiyat);
             cmd.Parameters.AddWithValue("@p5", "hazırlanıyor");
+            cmd.Parameters.AddWithValue("@p6", GlobalData.restoranadi);
             toplamFiyat = 0;
             cmd.ExecuteNonQuery();
             con.Close();

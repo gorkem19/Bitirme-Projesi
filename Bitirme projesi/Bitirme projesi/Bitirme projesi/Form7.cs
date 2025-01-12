@@ -45,10 +45,10 @@ namespace Bitirme_projesi
             try
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO iceceklistesi (icecekadı,icecekfiyati,sahibininkullanıcıadı) VALUES (@p1, @p2,@p3)", con);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO iceceklistesi (icecekadi,icecekfiyati,hangirestoranda) VALUES (@p1, @p2,@p3)", con);
                 cmd.Parameters.AddWithValue("@p1", textBox2.Text);
                 cmd.Parameters.AddWithValue("@p2", Convert.ToInt32(textBox5.Text));
-                cmd.Parameters.AddWithValue("@p3", GlobalData.kullanıcıadı);
+                cmd.Parameters.AddWithValue("@p3", GlobalData.restoranadi);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("icecek eklendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -66,10 +66,10 @@ namespace Bitirme_projesi
             try
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO tatlılistesi (tatlıadı,fiyat,sahibininkullanıcıadı) VALUES (@p1, @p2, @p3)", con);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO tatlılistesi (tatlıadi,fiyat,hangirestoranda) VALUES (@p1, @p2, @p3)", con);
                 cmd.Parameters.AddWithValue("@p1", textBox3.Text);
                 cmd.Parameters.AddWithValue("@p2", Convert.ToInt32(textBox6.Text));
-                cmd.Parameters.AddWithValue("@p3", GlobalData.kullanıcıadı);
+                cmd.Parameters.AddWithValue("@p3", GlobalData.restoranadi);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("tatlı eklendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,9 +88,9 @@ namespace Bitirme_projesi
                 con.Open();
 
 
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM yemeklistesi WHERE yemekadı=@p1", con);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM yemeklistesi WHERE yemekadi=@p1 AND hangirestoranda=@p2", con);
                 cmd.Parameters.AddWithValue("@p1", textBox7.Text);
-
+                cmd.Parameters.AddWithValue("@p2", GlobalData.restoranadi);
 
                 int affectedRows = cmd.ExecuteNonQuery();
                 if (affectedRows > 0)
@@ -121,9 +121,9 @@ namespace Bitirme_projesi
                 con.Open();
 
 
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM iceceklistesi WHERE icecekadı=@p1", con);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM iceceklistesi WHERE icecekadi=@p1 AND hangirestoranda=@p2", con);
                 cmd.Parameters.AddWithValue("@p1", textBox8.Text);
-
+                cmd.Parameters.AddWithValue("@p2", GlobalData.restoranadi);
 
                 int affectedRows = cmd.ExecuteNonQuery();
                 if (affectedRows > 0)
@@ -154,8 +154,9 @@ namespace Bitirme_projesi
                 con.Open();
 
 
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM tatlılistesi WHERE tatlıadı=@p1", con);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM tatlılistesi WHERE tatlıadi=@p1 AND hangirestoranda=@p2", con);
                 cmd.Parameters.AddWithValue("@p1", textBox9.Text);
+                cmd.Parameters.AddWithValue("@p2", GlobalData.restoranadi);
 
 
                 int affectedRows = cmd.ExecuteNonQuery();
@@ -189,6 +190,7 @@ namespace Bitirme_projesi
 
         private void button7_Click(object sender, EventArgs e)
         {
+            GlobalData.GirisYapanForm = "Form7";
             Form8 form8 = new Form8("Form7"); 
             form8.Show();
             this.Hide();

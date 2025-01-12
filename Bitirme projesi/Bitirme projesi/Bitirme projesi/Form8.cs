@@ -94,19 +94,40 @@ namespace Bitirme_projesi
         private void Veriyukle()
         {
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from siparisler", con);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (GlobalData.GirisYapanForm == "Form4")
             {
-                string siparisid = reader["siparis_id"].ToString();
-                string durum = reader["siparis_durumu"].ToString();
-                string ad = reader["siparisi_veren_adi"].ToString();
-                string siparislistesi = reader["siparislistesi"].ToString();
-                string siparisfiyati = reader["siparisfiyati"].ToString();
-                dataGridView1.Rows.Add(siparisid, durum, ad, siparislistesi, siparisfiyati);
+                MySqlCommand cmd = new MySqlCommand("select * from siparisler where  kullanici_adi = @p1", con);
+                cmd.Parameters.AddWithValue("@p1", GlobalData.kullanıcıadı);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                { 
+                    string siparisid = reader["siparis_id"].ToString();
+                    string durum = reader["siparis_durumu"].ToString();
+                    string ad = reader["siparisi_veren_adi"].ToString();
+                    string siparislistesi = reader["siparislistesi"].ToString();
+                    string siparisfiyati = reader["siparisfiyati"].ToString();
+                    dataGridView1.Rows.Add(siparisid, durum, ad, siparislistesi, siparisfiyati);
+                }
             }
-
+            else
+            {
+                MySqlCommand cmd2 = new MySqlCommand("select * from siparisler where siparis_hangi_restoranın = @p2", con);
+                cmd2.Parameters.AddWithValue("@p2", GlobalData.restoranadi);
+                MySqlDataReader reader = cmd2.ExecuteReader();
+                while (reader.Read())
+                {
+                    string siparisid = reader["siparis_id"].ToString();
+                    string durum = reader["siparis_durumu"].ToString();
+                    string ad = reader["siparisi_veren_adi"].ToString();
+                    string siparislistesi = reader["siparislistesi"].ToString();
+                    string siparisfiyati = reader["siparisfiyati"].ToString();
+                    dataGridView1.Rows.Add(siparisid, durum, ad, siparislistesi, siparisfiyati);
+                }
+              
+            }
             con.Close();
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

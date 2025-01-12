@@ -36,26 +36,12 @@ namespace Bitirme_projesi
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (GlobalData.kullanıcıadı == "g")
-            {
-                Form6 restoranForm = new Form6();
-
-                restoranForm.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("restoranın yok");
-            }
-        }
+     
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             GlobalData.restoranadi = comboBox2.SelectedItem?.ToString();
-            RestoranFormuAc(GlobalData.restoranadi);
             MySqlConnection con = new MySqlConnection("Server=localhost;Database=bitirmeprojesi;Uid=root;Pwd=123456");
             con.Open();
             MySqlCommand cmd = new MySqlCommand("SELECT sahibinin_kullanıcı_adı FROM restoranlar where isim =@p1 ", con);
@@ -63,6 +49,8 @@ namespace Bitirme_projesi
             object result = cmd.ExecuteScalar();
             con.Close();
             GlobalData.sahibininkullanıcıadı = result.ToString();
+            RestoranFormuAc(GlobalData.restoranadi);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -74,6 +62,7 @@ namespace Bitirme_projesi
 
         private void button5_Click(object sender, EventArgs e)
         {
+            GlobalData.GirisYapanForm = "Form4";
             Form8 form8 = new Form8("Form4");
             form8.Show();
             this.Hide();
@@ -84,6 +73,7 @@ namespace Bitirme_projesi
             {
                 Form6 form = restoranFormlari[restoranAdi];
                 form.Show();
+                this.Hide();
             }
             else
             {
