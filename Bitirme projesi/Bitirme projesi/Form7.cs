@@ -193,7 +193,7 @@ namespace Bitirme_projesi
             GlobalData.GirisYapanForm = "Form7";
             Form8 form8 = new Form8("Form7"); 
             form8.Show();
-            this.Hide();
+            
         }
     }
 }

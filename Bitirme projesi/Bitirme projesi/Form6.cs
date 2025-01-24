@@ -171,23 +171,30 @@ namespace Bitirme_projesi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            MessageBox.Show($"Siparisiniz Alınmıstır {toplamFiyat}");
-            string siparisListesi = string.Join(", ", listBox1.Items.Cast<string>());
-            listBox1.Items.Clear();
-            label5.Text = $"urunlerin toplam fiyati {toplamFiyat}";
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO siparisler (kullanici_adi, siparisi_veren_adi,siparislistesi,siparisfiyati,siparis_hangi_restoranın, siparis_durumu) VALUES (@p1, @p2, @p3,@p4,@p6,@p5)", con);
-            cmd.Parameters.AddWithValue("@p1", GlobalData.kullanıcıadı);
-            cmd.Parameters.AddWithValue("@p2", GlobalData.ad);
-            cmd.Parameters.AddWithValue("@p3", siparisListesi);
-            cmd.Parameters.AddWithValue("@p4", toplamFiyat);
-            cmd.Parameters.AddWithValue("@p5", "hazırlanıyor");
-            cmd.Parameters.AddWithValue("@p6", GlobalData.restoranadi);
-            toplamFiyat = 0;
-            label5.Text = $"urunlerin toplam fiyati: {toplamFiyat}";
-            cmd.ExecuteNonQuery();
-            con.Close();
+            if (toplamFiyat > 0)
+            {
+                con.Open();
+                MessageBox.Show($"Siparisiniz Alınmıstır {toplamFiyat}");
+                string siparisListesi = string.Join(", ", listBox1.Items.Cast<string>());
+                listBox1.Items.Clear();
+                label5.Text = $"urunlerin toplam fiyati {toplamFiyat}";
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO siparisler (kullanici_adi, siparisi_veren_adi,siparislistesi,siparisfiyati,siparis_hangi_restoranın, siparis_durumu) VALUES (@p1, @p2, @p3,@p4,@p6,@p5)", con);
+                cmd.Parameters.AddWithValue("@p1", GlobalData.kullanıcıadı);
+                cmd.Parameters.AddWithValue("@p2", GlobalData.ad);
+                cmd.Parameters.AddWithValue("@p3", siparisListesi);
+                cmd.Parameters.AddWithValue("@p4", toplamFiyat);
+                cmd.Parameters.AddWithValue("@p5", "hazırlanıyor");
+                cmd.Parameters.AddWithValue("@p6", GlobalData.restoranadi);
+                toplamFiyat = 0;
+                label5.Text = $"urunlerin toplam fiyati: {toplamFiyat}";
+                cmd.ExecuteNonQuery();
 
+            }
+            else
+            {
+                MessageBox.Show("siparis vermek icin bir urun eklemeniz gerekmektedir");
+            }
+            con.Close();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -197,14 +204,22 @@ namespace Bitirme_projesi
 
         private void button5_Click(object sender, EventArgs e)
         {
-           string silinenurun = (string)listBox1.SelectedItem;
+            string silinenurun = (string)listBox1.SelectedItem;
+            if (listBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen silmek için bir ürün seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else { 
+             silinenurun = (string)listBox1.SelectedItem;
            decimal silinecekurun = Convert.ToDecimal(silinenurun.Split('-')[1].Replace(" TL", "").Trim());
             listBox1.Items.Remove(listBox1.SelectedItem);
             toplamFiyat -= silinecekurun;
             label5.Text = $"urunlerin toplam fiyati: {toplamFiyat}";
-
-
         }
+
+
+    }
 
         private void button6_Click(object sender, EventArgs e)
         {

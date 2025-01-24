@@ -136,6 +136,7 @@ namespace Bitirme_projesi
             Form4 Form4 = new Form4();
             Form4.Show();
             this.Hide();
+
         }
     }
 }

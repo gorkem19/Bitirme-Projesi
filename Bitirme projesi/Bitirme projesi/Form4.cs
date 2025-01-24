@@ -40,16 +40,23 @@ namespace Bitirme_projesi
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             GlobalData.restoranadi = comboBox2.SelectedItem?.ToString();
-            MySqlConnection con = new MySqlConnection("Server=localhost;Database=bitirmeprojesi;Uid=root;Pwd=123456");
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT sahibinin_kullanıcı_adı FROM restoranlar where isim =@p1 ", con);
-            cmd.Parameters.AddWithValue("@p1", GlobalData.restoranadi);
-            object result = cmd.ExecuteScalar();
-            con.Close();
-            GlobalData.sahibininkullanıcıadı = result.ToString();
-            RestoranFormuAc(GlobalData.restoranadi);
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen bir restoran seçiniz.");
+            }
+            else
+            {
+                MySqlConnection con = new MySqlConnection("Server=localhost;Database=bitirmeprojesi;Uid=root;Pwd=123456");
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT sahibinin_kullanıcı_adı FROM restoranlar where isim =@p1 ", con);
+                cmd.Parameters.AddWithValue("@p1", GlobalData.restoranadi);
+                object result = cmd.ExecuteScalar();
+                con.Close();
+                GlobalData.sahibininkullanıcıadı = result.ToString();
+                RestoranFormuAc(GlobalData.restoranadi);
+
+            }
 
         }
 
